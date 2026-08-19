@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-volume-test
+spec:
+  containers:
+  - name: config-volume-test
+    image: busybox
+    command: ["sleep", "3600"]
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/config
+
+  volumes:
+  - name: config-volume
+    configMap:
+      name: app-config
